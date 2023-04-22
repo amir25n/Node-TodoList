@@ -1,0 +1,26 @@
+{
+    "name": "node-todo-list",
+    "version": "1.0.0",
+    "main": "main.js",
+    "author": "amir25n <amir25nk@gmail.com>",
+    "type": "module",
+    "scripts": {
+        "r": "ts-node main.ts",
+        "mon": "nodemon -e ejs,css,js,json,ts main.ts"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "bootstrap-v4-rtl": "^4.6.2-1",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "font-awesome": "^4.7.0",
+        "typescript": "^5.0.4"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.17",
+        "@types/node": "^18.15.13",
+        "nodemon": "^2.0.22",
+        "ts-node": "^10.9.1"
+    }
+}
