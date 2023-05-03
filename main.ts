@@ -2,7 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import { staticsFile } from "./utils/statics.js";
+
 import saveTodo from "./routes/Todo.js";
+import homeRoutes from "./routes/index.js";
 
 const app = express();
 
@@ -20,9 +22,7 @@ app.set("views", "views");
 // End of Ejs
 
 // Routes
-app.get("/", (req, res) => {
-    res.render("index");
-});
+app.use(homeRoutes);
 
 app.use("/admin", saveTodo);
 // End of Routes

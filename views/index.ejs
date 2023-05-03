@@ -30,5 +30,22 @@
                 </p>
             </div>
         </div>
+        <% if(todos.length < 1) { %>
+        <div class="m-auto">
+            <h1>هیچ کاری امروز نداری</h1>
+        </div>
+        <%} else { %>
+        <ul class="contaner">
+            <% for(todo of todos) { %>
+            <li>
+                <div>
+                    <%= todo.text %>
+                    <a href="#" class="fa fa-trash"></a>
+                    <a href="#" class="fa fa-bookmark-o"></a>
+                </div>
+            </li>
+            <% } %>
+        </ul>
+        <% } %>
     </body>
 </html>
