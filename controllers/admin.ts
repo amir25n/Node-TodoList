@@ -10,3 +10,17 @@ export const addTodo = (req: Request, res: Response) => {
         else res.redirect("/");
     });
 };
+
+export const deleteTodo = (req: Request, res: Response) => {
+    Todo.deleteTodo(req.params.id, (err) => {
+        if (!err) res.redirect("/");
+        else console.log(err);
+    });
+};
+
+export const completedTodo = (req: Request, res: Response) => {
+    Todo.completedTodo(req.params.id, (err) => {
+        if (!err) res.redirect("/");
+        else console.log(err);
+    });
+};

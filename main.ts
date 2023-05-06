@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 
 import { staticsFile } from "./utils/statics.js";
 
-import saveTodo from "./routes/Todo.js";
+import adminRoutes from "./routes/Todo.js";
 import homeRoutes from "./routes/index.js";
 
 const app = express();
@@ -24,8 +24,8 @@ app.set("views", "views");
 // Routes
 app.use(homeRoutes);
 
-app.use("/admin", saveTodo);
+app.use("/admin", adminRoutes);
 // End of Routes
 
-const port = 2000;
+const port = 3000;
 app.listen(port, () => console.log(`"server is runing on port ${port} "`));

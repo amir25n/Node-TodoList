@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "r": "ts-node main.ts",
-        "mon": "nodemon -e ejs,css,js,json,ts main.ts"
+        "mon": "nodemon -e ejs,css,js,ts main.ts"
     },
     "license": "MIT",
     "dependencies": {

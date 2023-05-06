@@ -7,12 +7,11 @@
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="css/bootstrap-rtl.css" />
         <link rel="stylesheet" href="css/font-awesome.css" />
-        <title>TodoList</title>
+        <title>Node TodoList</title>
     </head>
     <body class="rtl">
         <div class="form-group">
             <h1>کارهای <small>روزمره</small></h1>
-
             <form action="/admin/todo" role="form" class="row w-50 justify-content-center mx-auto" method="POST">
                 <div class="input-group">
                     <input type="text" name="todo" class="form-control w-50" placeholder="کار امروز" />
@@ -29,23 +28,30 @@
                     کارهای باقی مانده امروز : <span class="badge badge-warning badge-pill">0<!-- RemainingTodos --></span>
                 </p>
             </div>
-        </div>
-        <% if(todos.length < 1) { %>
-        <div class="m-auto">
-            <h1>هیچ کاری امروز نداری</h1>
-        </div>
-        <%} else { %>
-        <ul class="contaner">
-            <% for(todo of todos) { %>
-            <li>
-                <div>
-                    <%= todo.text %>
-                    <a href="#" class="fa fa-trash"></a>
-                    <a href="#" class="fa fa-bookmark-o"></a>
-                </div>
-            </li>
+            <% if(todos.length > 0) { %>
+            <ul class="list-unstyled" id="todo">
+                <% for(let todo of todos) { %>
+                <li>
+                    <div class="alert <%= todo.completed ? 'alert-success' : 'alert-secondary' %>">
+                        <% if(todo.completed){ %>
+                        <del> <%= todo.text %></del>
+                        <a href="/admin/delete-todo/<%= todo.id %>" class="close fa fa-trash" style="color: red; font-size: 1.4em; padding-right: 4px"></a>
+                        <% } else { %> <%= todo.text %>
+                        <a href="/admin/delete-todo/<%= todo.id %>" class="close fa fa-trash" style="color: red; font-size: 1.4em; padding-right: 4px"></a>
+                        <a href="/admin/completed-todo/<%= todo.id %>" class="close fa fa-check-square mrr-2" style="color: green; font-size: 1.4em"></a>
+                        <% } %>
+                    </div>
+                </li>
+                <% } %>
+            </ul>
+            <% } else { %>
+            <div class="alert alert-warning w-50 mx-auto" role="alert">
+                <h4 class="alert-heading">هیچ کاری برای امروز نیست</h4>
+                <p>می تونی کارهای امروزت رو بالا بنویسی تا برات ثبت کنم</p>
+                <hr />
+                <p class="mb-0">اگر کم و کاستی داشت به دل نگیر <span class="fa fa-heart" style="color: red" /></p>
+            </div>
             <% } %>
-        </ul>
-        <% } %>
+        </div>
     </body>
 </html>
