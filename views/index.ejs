@@ -21,12 +21,8 @@
                 </div>
             </form>
             <div class="mx-auto w-50 mb-3 alert alert-primary row">
-                <p class="d-inline col">
-                    کارهای انجام شده : <span class="badge badge-success badge-pill">0<!-- CompletedTodos --></span>
-                </p>
-                <p class="d-inline col">
-                    کارهای باقی مانده امروز : <span class="badge badge-warning badge-pill">0<!-- RemainingTodos --></span>
-                </p>
+                <p class="d-inline col">کارهای انجام شده : <span class="badge badge-success badge-pill"><%= completedTodo %></span></p>
+                <p class="d-inline col">کارهای باقی مانده امروز : <span class="badge badge-warning badge-pill"><%= reminingTodo %></span></p>
             </div>
             <% if(todos.length > 0) { %>
             <ul class="list-unstyled" id="todo">
