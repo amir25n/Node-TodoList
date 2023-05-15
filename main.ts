@@ -5,6 +5,7 @@ import { staticsFile } from "./utils/statics.js";
 
 import adminRoutes from "./routes/Todo.js";
 import homeRoutes from "./routes/index.js";
+import get404 from "./controllers/404.js";
 
 const app = express();
 
@@ -23,8 +24,8 @@ app.set("views", "views");
 
 // Routes
 app.use(homeRoutes);
-
 app.use("/admin", adminRoutes);
+app.use(get404);
 // End of Routes
 
 const port = 1000;

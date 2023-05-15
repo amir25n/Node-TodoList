@@ -2,7 +2,7 @@ import { getTodo, saveTodo } from "../utils/todo.js";
 import { Mtodo } from "../utils/types.js";
 
 class Todo {
-    constructor(public text: string, public id: number, public completed: boolean = false) {}
+    constructor(public text: string, public id: string, public completed: boolean = false) {}
 
     save(callback: (erorr: NodeJS.ErrnoException | null) => void) {
         getTodo((todos) => {
@@ -28,7 +28,7 @@ class Todo {
     static deleteTodo(id: string, callback: (err: NodeJS.ErrnoException | null) => void) {
         getTodo((todos) => {
             saveTodo(
-                todos.filter((t) => t.id !== +id),
+                todos.filter((t) => t.id !== id),
                 (err) => {
                     callback(err);
                 }
@@ -37,7 +37,7 @@ class Todo {
     }
     static completeTodo(id: string, callback: (err: NodeJS.ErrnoException | null) => void) {
         getTodo((todos) => {
-            const indexTodo = todos.findIndex((t) => t.id == +id);
+            const indexTodo = todos.findIndex((t) => t.id == id);
             todos[indexTodo].completed = true;
             saveTodo(todos, (err) => {
                 callback(err);
