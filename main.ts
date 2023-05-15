@@ -27,5 +27,5 @@ app.use(homeRoutes);
 app.use("/admin", adminRoutes);
 // End of Routes
 
-const port = 3000;
+const port = 1000;
 app.listen(port, () => console.log(`"server is runing on port ${port} "`));

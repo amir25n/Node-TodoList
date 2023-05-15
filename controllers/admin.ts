@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import Todo from "../model/add-todo.js";
+import { log } from "console";
 
 export const addTodo = (req: Request, res: Response) => {
     if (!req.body.todo) return res.redirect("/");
@@ -10,7 +11,6 @@ export const addTodo = (req: Request, res: Response) => {
         else res.redirect("/");
     });
 };
-
 export const deleteTodo = (req: Request, res: Response) => {
     Todo.deleteTodo(req.params.id, (err) => {
         if (!err) res.redirect("/");
@@ -18,8 +18,8 @@ export const deleteTodo = (req: Request, res: Response) => {
     });
 };
 
-export const completedTodo = (req: Request, res: Response) => {
-    Todo.completedTodo(req.params.id, (err) => {
+export const completeTodo = (req: Request, res: Response) => {
+    Todo.completeTodo(req.params.id, (err) => {
         if (!err) res.redirect("/");
         else console.log(err);
     });
