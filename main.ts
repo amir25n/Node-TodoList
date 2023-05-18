@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import { staticsFile } from "./utils/statics.js";
+import sequelize from "./utils/dataBase.js";
 
 import adminRoutes from "./routes/Todo.js";
 import homeRoutes from "./routes/index.js";
@@ -29,4 +30,10 @@ app.use(get404);
 // End of Routes
 
 const port = 1000;
-app.listen(port, () => console.log(`"server is runing on port ${port} "`));
+
+sequelize
+    .sync()
+    .then(() => {
+        app.listen(port, () => console.log(`"server is runing on port ${port} "`));
+    })
+    .catch((err) => console.log(err));

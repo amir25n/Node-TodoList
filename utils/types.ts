@@ -1,5 +1,5 @@
 export type Mtodo = {
     text: string;
-    id: string;
+    id: number;
     completed: boolean;
 };
