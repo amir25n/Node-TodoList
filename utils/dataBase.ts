@@ -1,7 +1,8 @@
-import { Sequelize } from "sequelize";
+import mongoose from "mongoose";
 
-const sequelize = new Sequelize("todo_db", "root", "1384amiramir", {
-    dialect: "mysql",
-    host: "localhost",
-});
-export default sequelize;
+export const connectDataBase = () => {
+    mongoose
+        .connect("mongodb://localhost/todo_db")
+        .then(() => console.log("data base is connected"))
+        .catch((err) => console.log(err));
+};
