@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import { staticsFile } from "./utils/statics.js";
-import sequelize from "./utils/dataBase.js";
+import { connectDataBase } from "./utils/dataBase.js";
 
 import adminRoutes from "./routes/Todo.js";
 import homeRoutes from "./routes/index.js";
@@ -18,6 +18,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 staticsFile(app);
 // End of statics
 
+// dataBase
+connectDataBase();
+// End of DataBase
+
 // Ejs
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -31,9 +35,4 @@ app.use(get404);
 
 const port = 1000;
 
-sequelize
-    .sync()
-    .then(() => {
-        app.listen(port, () => console.log(`"server is runing on port ${port} "`));
-    })
-    .catch((err) => console.log(err));
+app.listen(port, () => console.log(`"server is runing on port ${port} "`));

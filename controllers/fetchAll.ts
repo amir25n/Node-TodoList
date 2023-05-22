@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
-import Todo from "../model/add-todo.js";
+import { Todo } from "../model/add-todo.js";
 
 export const indexRoutes = async (req: Request, res: Response) => {
     try {
-        const todos = await Todo.findAll();
+        const todos = await Todo.find();
         const completedTodo = await Todo.count({ where: { completed: true } });
         res.render("index", {
             todos,

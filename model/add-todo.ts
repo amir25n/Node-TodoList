@@ -1,23 +1,16 @@
-import { DataTypes } from "sequelize";
+import mongoose from "mongoose";
 
-import sequelize from "../utils/dataBase.js";
-
-const Todo = sequelize.define("Todo", {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true,
-    },
+const todo_schema = new mongoose.Schema({
     text: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
     },
     completed: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true, //? default is true
-        defaultValue: false,
+        type: Boolean,
+        default: false,
+        required: false,
     },
 });
-
-export default Todo;
+export const Todo = mongoose.model("todo_db", todo_schema);
